@@ -24,4 +24,3 @@ git commit -m 'deploy'
 git push -f git@github.com:letmedream/letmeChat.git main:gh-pages
 
 cd -
-$SHELL
