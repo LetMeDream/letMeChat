@@ -20,7 +20,7 @@ function SendMessage({scroll}) {
     e.preventDefault();
     // Add a new document in collection "cities"
     if(!auth.currentUser){
-      alert('You must log in before sendint any message');
+      alert('You must log in before sending any message');
       setInput('');
       return
     }

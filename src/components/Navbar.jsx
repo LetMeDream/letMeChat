@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from '../Firebase'
 import Signin from './SignIn'
 import SignOut from './SignOut'
+import { Link } from 'react-router-dom'
 
 function Navbar() {
   const style = {
@@ -16,9 +17,9 @@ function Navbar() {
   const user = auth.currentUser;
   return (
     <div className={style.nav} style={style.area}>
-        <div className={style.heading}>
+        <Link to='/letMeChat/' className={style.heading}>
             Let me +
-        </div>   
+        </Link>   
 
         { user ? <img className='rounded-full w-16' src={user.photoURL}></img> : '' }
 

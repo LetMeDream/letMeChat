@@ -1,40 +1,20 @@
-import Navbar from './components/Navbar.jsx' 
-import './App.css'
-import { useAuthState } from "react-firebase-hooks/auth"
-import { auth } from './Firebase'
-import Chat from './components/Chat.jsx'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import Home from './pages/Home'
+import Room1 from './pages/Room1'
+
 
 
 function App() {
-  /* styles */
-  const style = {
-    appContainer:'w-full text-center relative ',
-    sectionContainer:'mx-auto max-h-screen caret-transparent',
-    grid: {
-      /* overflowY:'scroll', */
-      height: '100vh',
-      display: 'grid',
-      gridTemplateAreas: `
-        ' n n n n '
-        ' c c c c ' 
-        ' x x x x '
-      `,
-      gridTemplateRows: '1fr 5fr 1fr'
-    }
-  }
 
-  const [user] = useAuthState(auth);
-  console.log(user);
   return (
-    <div className={style.appContainer + ''}>
-      <section className={style.sectionContainer} style={style.grid}>
-        {/* Navbar */}
-        <Navbar/>
-        {/* Chat component */}
-        <Chat />
-        
-      </section>
-    </div>
+    <Routes>
+      {/* Home */}
+      <Route path='/' element={<Home/>}></Route>
+      <Route path='/letMeChat/' element={<Home/>}></Route>
+      {/* General chat room */}
+      <Route path='/letMeChat/Reposteros' element={<Room1/>}></Route>
+
+    </Routes>
   )
 }
 
