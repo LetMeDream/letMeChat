@@ -21,7 +21,7 @@ function Home() {
     <>  
       <div className={style.container}>
           <div className='h-[32rem] aspect-[5/8] rounded-xl caret-transparent shadow-lg flex flex-col bg-blue-300 items-center justify-between'>
-              <Link to='/letMeChat/Reposteros' className='relative top-6 text-slate-800 text-lg'>Let me +</Link>
+              <Link to='/letMeChat/room1' className='relative top-6 text-slate-800 text-lg'>Let me +</Link>
               <div className='bg-[#112D4E] w-full h-2/6 rounded-t-xl flex items-center justify-center'>
                 { user ? <SignOut/> : <Signin/> }
               </div>
