@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { auth } from "../Firebase";
-import Signin from "../components/SignIn";
+import SignIn from "../components/SignIn";
 import SignOut from "../components/SignOut";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
@@ -26,7 +26,7 @@ function Home() {
             Let me +
           </Link>
           <div className="bg-[#112D4E] w-full h-2/6 rounded-t-xl flex items-center justify-center">
-            {user ? <SignOut /> : <Signin />}
+            {user ? <SignOut /> : <SignIn />}
           </div>
         </div>
       </div>

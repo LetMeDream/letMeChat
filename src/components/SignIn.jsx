@@ -3,7 +3,7 @@ import GoogleButton from "react-google-button";
 import { auth } from "../Firebase";
 import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 
-function Signin() {
+function SignIn() {
   const style = {
     title: `text-white`,
   };
@@ -25,4 +25,4 @@ function Signin() {
   );
 }
 
-export default Signin;
+export default SignIn;

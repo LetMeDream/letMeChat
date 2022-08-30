@@ -1,7 +1,6 @@
 import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase";
-import Signin from "./SignIn";
+import SignIn from "./SignIn";
 import SignOut from "./SignOut";
 import { Link } from "react-router-dom";
 
@@ -27,7 +26,7 @@ function Navbar() {
         ""
       )}
 
-      {user ? <SignOut /> : <Signin />}
+      {user ? <SignOut /> : <SignIn />}
     </div>
   );
 }

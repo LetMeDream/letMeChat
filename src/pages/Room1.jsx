@@ -1,6 +1,5 @@
 import Navbar from "../components/Navbar.jsx";
 import "../App.css";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase";
 import Chat from "../components/Chat.jsx";
 
@@ -15,15 +14,13 @@ function Room1() {
       display: "grid",
       gridTemplateAreas: `
         ' n n n n '
-        ' c c c c ' 
+        ' c c c c '
         ' x x x x '
       `,
       gridTemplateRows: "1fr 5fr 1fr",
     },
   };
 
-  const [user] = useAuthState(auth);
-  console.log(user);
   return (
     <div className={style.appContainer + ""}>
       <section className={style.sectionContainer} style={style.grid}>
