@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../Firebase";
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 function Message({ message }) {
   const style = {
@@ -26,6 +27,7 @@ function Message({ message }) {
       hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
     return formattedTime;
   };
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
     setDate(timeStampToDate());
@@ -36,7 +38,7 @@ function Message({ message }) {
     <div>
       <div
         className={`${style.message} ${
-          auth.currentUser?.uid === message.uid ? style.sent : style.received
+          user?.uid === message.uid ? style.sent : style.received
         }`}
       >
         <p className={style.name}>{message.name ? message.name : "Anon"}</p>

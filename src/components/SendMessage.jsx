@@ -1,6 +1,7 @@
 import { collection, serverTimestamp, addDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { auth, db } from "../Firebase";
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 function SendMessage({ scroll }) {
   const style = {
@@ -13,12 +14,13 @@ function SendMessage({ scroll }) {
   };
 
   const [input, setInput] = useState("");
-  const { displayName, uid } = auth.currentUser ? auth.currentUser : "";
+  const [user] = useAuthState(auth);
+  const { displayName, uid } = user ? user : "";
 
   const sendMessage = async (e) => {
     e.preventDefault();
     // Add a new document in collection "cities"
-    if (!auth.currentUser) {
+    if (!user) {
       alert("You must log in before sending any message");
       setInput("");
       return;

@@ -3,6 +3,7 @@ import { auth } from "../Firebase";
 import SignIn from "./SignIn";
 import SignOut from "./SignOut";
 import { Link } from "react-router-dom";
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 function Navbar() {
   const style = {
@@ -13,7 +14,8 @@ function Navbar() {
     },
   };
   /* Is there any logged Google user? */
-  const user = auth.currentUser;
+  const [user] = useAuthState(auth);
+  console.log(user);
   return (
     <div className={style.nav} style={style.area}>
       <Link to="/letMeChat/" className={style.heading}>

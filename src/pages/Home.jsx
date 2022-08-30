@@ -4,16 +4,17 @@ import { auth } from "../Firebase";
 import SignIn from "../components/SignIn";
 import SignOut from "../components/SignOut";
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import { useAuthState } from 'react-firebase-hooks/auth';
+
 
 function Home() {
   const style = {
     container: "flex w-screen h-screen justify-center items-center bg-gray-100",
   };
-  const user = auth.currentUser;
-  /* useEffect(()=>{
-    console.log(auth.currentUser)
-  },[]); */
+  const [user] = useAuthState(auth);
+  useEffect(()=>{
+    console.log(user)
+  },[]);
 
   return (
     <>

@@ -21,6 +21,8 @@ function Room1() {
     },
   };
 
+  /* const [user] = useAuthState(auth);
+  console.log(user); */
   return (
     <div className={style.appContainer + ""}>
       <section className={style.sectionContainer} style={style.grid}>
