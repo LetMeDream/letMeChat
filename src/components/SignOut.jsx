@@ -2,6 +2,7 @@ import React from "react";
 import { auth } from "../Firebase";
 import { signOut } from "firebase/auth";
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { motion } from 'framer-motion'
 
 function SignOut() {
   const style = {
@@ -21,9 +22,12 @@ function SignOut() {
 
 
   return (
-    <div onClick={goodBye} className={style.btn}>
+    <motion.div 
+      animate={{scale:1}}
+      initial={{ scale:0 }}
+      onClick={goodBye} className={style.btn}>
       Sign Out
-    </div>
+    </motion.div>
   );
 }
 
