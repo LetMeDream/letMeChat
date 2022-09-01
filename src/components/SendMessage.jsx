@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { auth, db } from "../Firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
 
-function SendMessage({ scroll }) {
+function SendMessage({ scroll, messagePath }) {
   const style = {
     form: `h-14 w-full max-w-[720px] mx-auto flex text-xl caret-transparent`,
     input: `w-full text-xl p-3 bg-gray-900 text-white outline-none border-none caret-white`,
@@ -27,7 +27,8 @@ function SendMessage({ scroll }) {
     }
 
     if (input) {
-      await addDoc(collection(db, "messages"), {
+      /* Here we need to get the path as a prop as well */
+      await addDoc(collection(db, messagePath), {
         text: input,
         name: displayName,
         uid,

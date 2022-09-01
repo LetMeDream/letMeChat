@@ -4,6 +4,7 @@ import SignIn from "./SignIn";
 import SignOut from "./SignOut";
 import { Link } from "react-router-dom";
 import { useAuthState } from 'react-firebase-hooks/auth';
+import {motion} from 'framer-motion'
 
 function Navbar() {
   const style = {
@@ -23,7 +24,13 @@ function Navbar() {
       </Link>
 
       {user ? (
-        <img className="rounded-full w-16" src={user.photoURL}></img>
+        <motion.img 
+          animate={{scale:1, borderRadius:'10%'}}
+          initial={{ scale:0, borderRadius: '100%' }}
+          transition= {{ duration:.5 }}
+          whileHover={{ borderRadius: '100%', scale:1.1 }}  
+          className="rounded-full w-16" src={user.photoURL}>
+        </motion.img>
       ) : (
         ""
       )}

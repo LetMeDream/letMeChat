@@ -18,7 +18,7 @@ function Room1() {
         ' x x x x '
       `,
       gridTemplateRows: "1fr 5fr 1fr",
-    },
+    }
   };
 
   /* const [user] = useAuthState(auth);
@@ -29,7 +29,7 @@ function Room1() {
         {/* Navbar */}
         <Navbar />
         {/* Chat component */}
-        <Chat />
+        <Chat roomPath={'messages'}/>
       </section>
     </div>
   );
