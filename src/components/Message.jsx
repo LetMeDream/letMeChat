@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../Firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
+import Delete from './Delete';
+import { motion } from 'framer-motion'
 
-function Message({ message }) {
+function Message({ message, messagePath }) {
   const style = {
-    message: `flex items-center shadow-xl m-4 px-3 py-2 rounded-tl-xl rounded-tr-xl `,
-    name: `absolute mt-[-4rem] text-gray-600 text-xs `,
-    sent: `bg-[#395dff] text-white flex-row-reverse text-end float-right rounded-bl-xl `,
-    received: `bg-[#e5e5ea] text-black float-left rounded-br-xl `,
+    message: `flex items-center shadow-xl m-4 px-3 py-2 rounded-tl-xl rounded-tr-xl`,
+    name: `absolute mt-[-60px] text-gray-600 text-xs min-w-max`,
+    sent: `bg-[#395dff] text-white flex-row-reverse float-right rounded-bl-xl relative`,
+    received: `bg-[#e5e5ea] text-black float-left rounded-br-xl relative`,
   };
   const [date, setDate] = useState(0);
   const timeStampToDate = () => {
@@ -31,11 +33,11 @@ function Message({ message }) {
 
   useEffect(() => {
     setDate(timeStampToDate());
-    console.log("done!");
+    /* console.log(message); */
   }, [message]);
 
   return (
-    <div>
+    <div className=''>
       <div
         className={`${style.message} ${
           user?.uid === message.uid ? style.sent : style.received
@@ -43,7 +45,18 @@ function Message({ message }) {
       >
         <p className={style.name}>{message.name ? message.name : "Anon"}</p>
         <p title={date}>{message.text}</p>
+        {/* Delete */}
+        { user?.uid === message.uid ? 
+        (<motion.div className='absolute left-[-42px] text-black'
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+        >
+          <Delete messagePath={messagePath} messageId={message.id}/>
+        </motion.div>) 
+        : '' }
+        
       </div>
+
     </div>
   );
 }

@@ -29,7 +29,7 @@ function Chat({roomPath}) {
   };
 
   /* Animating the messages appearance */
-  const variante ={
+  const variant ={
     entrance: i => ({
       scale: 1,
       transition: {
@@ -51,11 +51,12 @@ function Chat({roomPath}) {
           ? messages.map((message, i) => (
               <motion.div
                 initial={{ scale:0 }}
+                key={i}
                 custom={i}
-                variants={variante}
+                variants={variant}
                 animate='entrance'
               >
-                <Message key={message.id} message={message}></Message>
+                <Message key={message.id} message={message} messagePath={roomPath}></Message>
               </motion.div>
             ))
           : ""}

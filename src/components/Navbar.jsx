@@ -8,7 +8,7 @@ import {motion} from 'framer-motion'
 
 function Navbar() {
   const style = {
-    nav: `bg-[#112D4E] flex justify-between p-5 items-center text-black`,
+    nav: `bg-gray-800 flex justify-between p-5 items-center text-black`,
     heading: `text-white text-2xl`,
     area: {
       gridArea: "n",

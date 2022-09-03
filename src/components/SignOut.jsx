@@ -3,13 +3,11 @@ import { auth } from "../Firebase";
 import { signOut } from "firebase/auth";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { motion } from 'framer-motion'
+import Button from '@mui/material/Button';
 
 function SignOut() {
-  const style = {
-    btn: `bg-[#F8F0DF] cursor-pointer p-3 text-gray-500 shadow-gray-900 shadow-sm transition-shadow hover:shadow-lg duration-[250ms] `,
-  };
   const [user] = useAuthState(auth);
-  const goodBye = () => {
+  const logOut = () => {
     signOut(auth)
       .then(() => {
         alert("Cya around, " + user.displayName);
@@ -25,8 +23,8 @@ function SignOut() {
     <motion.div 
       animate={{scale:1}}
       initial={{ scale:0 }}
-      onClick={goodBye} className={style.btn}>
-      Sign Out
+      onClick={logOut}>
+        <Button variant="outlined" color="primary">Sign Out</Button>
     </motion.div>
   );
 }
