@@ -36,6 +36,8 @@ function Message({ message, messagePath }) {
     /* console.log(message); */
   }, [message]);
 
+  /* Let's show the Kebab Menu (<Delete/>) when hovering on it's parent as well */
+
   return (
     <div className=''>
       <div

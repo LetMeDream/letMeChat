@@ -153,7 +153,7 @@ function Home() {
             }
             {
               rooms.length ? chats : (
-                <Stack spacing={1} width="100%">
+                <Stack spacing={1} width="90%">
                   <Skeleton variant="rounded" width="100%" height={45} />
                   <Skeleton variant="rounded" width="100%" height={45} />
                   <Skeleton variant="rounded" width="100%" height={45} />
