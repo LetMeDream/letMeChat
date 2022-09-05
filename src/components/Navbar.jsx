@@ -13,6 +13,7 @@ function Navbar() {
     area: {
       gridArea: "n",
     },
+    navImg:"rounded-full w-16 cursor-pointer"
   };
   /* Is there any logged Google user? */
   const [user] = useAuthState(auth);
@@ -29,7 +30,7 @@ function Navbar() {
           initial={{ scale:0, borderRadius: '100%' }}
           transition= {{ duration:.5 }}
           whileHover={{ borderRadius: '100%', scale:1.1 }}  
-          className="rounded-full w-16" src={user.photoURL}>
+          className={style.navImg} src={user.photoURL}>
         </motion.img>
       ) : (
         ""

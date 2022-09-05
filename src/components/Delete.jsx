@@ -5,6 +5,20 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from '../Firebase';
+/* In order to style our MoreVertIcon component from MUI */
+import { makeStyles } from '@mui/styles';
+const useStyles = makeStyles({
+  kebab: {
+    color: 'black'
+  },
+  kebabBg:{
+    backgroundColor: '#7b7b7bd1',
+    '&:hover':{
+      backgroundColor: '#c0c0c0fd'
+    }
+  }
+});
+
 
 export default function BasicMenu({messagePath, messageId}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -20,17 +34,19 @@ export default function BasicMenu({messagePath, messageId}) {
     /* alert(messageId); */
     await deleteDoc(doc(db, messagePath, messageId));
   }
-
+  /* in order to style our MoreVertIcon component */
+  const classes = useStyles();
   return (
     <div>
       <IconButton
+        className={classes.kebabBg}
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <MoreVertIcon/>
+        <MoreVertIcon className={classes.kebab}/>
       </IconButton>
       <Menu
         id="basic-menu"

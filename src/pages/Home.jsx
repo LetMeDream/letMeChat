@@ -40,7 +40,7 @@ function Home() {
 
   const style = {
     container: "flex w-screen h-screen justify-center items-center bg-gray-100",
-    loginCard: "h-[32rem] aspect-[7/12] rounded-t-md caret-transparent shadow-md shadow-gray-600 flex flex-col bg-slate-400 items-center justify-between",
+    loginCard: "h-[32rem] aspect-[7/12] min-w-[50vw] lg:min-w-max rounded-t-md caret-transparent shadow-md shadow-gray-600 flex flex-col bg-slate-400 items-center justify-between",
     titleLink: 'relative top-6 text-slate-800 text-lg',
     loginCardFooter: 'bg-gray-800 w-full h-1/5 rounded-t-xl flex items-center justify-center relative top-[1px]',
     roomLink: 'w-full text-center cursor-pointer bg-gray-800 py-2 hover:bg-slate-600 hover:text-white hover:shadow-xl'
