@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import Delete from './Delete';
 import { motion } from 'framer-motion'
 
+
 function Message({ message, messagePath }) {
   const style = {
     message: `flex items-center shadow-xl my-1 px-2 py-2 rounded-tl-xl rounded-tr-xl cursor-pointer relative`,
@@ -40,29 +41,32 @@ function Message({ message, messagePath }) {
   }, [message]);
 
   /* Let's show the Kebab Menu (<Delete/>) when hovering on it's parent as well */
-  const deleteMotion= {
-    rest:{
-      opacity: 0 
-    },
-    hover:{
-      opacity: 1
+  let deleteMotion
+  const isMobile = window.innerWidth < 768;
+  if(!isMobile){
+    deleteMotion = {
+      rest:{
+        opacity: 0 
+      },
+      hover:{
+        opacity: 1
+      }
     }
   }
 
   return (
     <div className={`${style.messageContainer} ${user?.uid === message.uid ? style.messageSent : style.messageReceived}`}>
-      <p className={style.name}>{message.name ? message.name : "Anon"}</p>
+        <p className={style.name}>{message.name ? message.name : "Anon"}</p>
         <motion.div className={`${style.message} ${user?.uid === message.uid ? style.globeSent : style.globeReceived}`}
            initial='rest' whileHover='hover'>
         
           <p title={date}>{message.text}</p>
           {/* Delete */}
           { user?.uid === message.uid ? 
-          (<motion.div className='absolute left-[-42px] text-black'
-            variants={deleteMotion}
-          >
-            <Delete messagePath={messagePath} messageId={message.id}/>
-          </motion.div>) 
+           ( <motion.div className='absolute left-[-42px] text-black'
+                         variants={deleteMotion}>
+                <Delete messagePath={messagePath} messageId={message.id}/>
+             </motion.div> ) 
           : '' }
         
         </motion.div>

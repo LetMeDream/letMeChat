@@ -4,7 +4,9 @@ import SignIn from "./SignIn";
 import SignOut from "./SignOut";
 import { Link } from "react-router-dom";
 import { useAuthState } from 'react-firebase-hooks/auth';
-import {motion} from 'framer-motion'
+import {motion} from 'framer-motion';
+
+
 
 function Navbar() {
   const style = {
@@ -18,6 +20,7 @@ function Navbar() {
   /* Is there any logged Google user? */
   const [user] = useAuthState(auth);
   console.log(user);
+
   return (
     <div className={style.nav} style={style.area}>
       <Link to="/letMeChat/" className={style.heading}>

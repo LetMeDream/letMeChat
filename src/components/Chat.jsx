@@ -4,10 +4,15 @@ import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 import { db } from "../Firebase";
 import SendMessage from "./SendMessage";
 import { motion } from 'framer-motion'
+/*  */
+import { auth } from "../Firebase";
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 function Chat({roomPath}) {
+
+  const [user] = useAuthState(auth);
   const style = {
-    main: "flex flex-col p-[10px] relative overflow-y-auto relative ",
+    main: "flex flex-col p-[10px] relative overflow-y-auto relative",
     area: {
       gridArea: "c",
     },
@@ -55,6 +60,7 @@ function Chat({roomPath}) {
                 custom={i}
                 variants={variant}
                 animate='entrance'
+                className={`${user?.uid === message.uid ? 'self-end' : 'self-start'} max-w-[80vw] md:max-w-max`}
               >
                 <Message key={message.id} message={message} messagePath={roomPath}></Message>
               </motion.div>
