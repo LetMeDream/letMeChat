@@ -6,10 +6,13 @@ import { motion } from 'framer-motion'
 
 function Message({ message, messagePath }) {
   const style = {
-    message: `flex items-center shadow-xl m-4 px-3 py-2 rounded-tl-xl rounded-tr-xl cursor-pointer`,
-    name: `absolute mt-[-60px] text-gray-600 text-xs min-w-max`,
-    sent: `bg-[#395dff] text-white flex-row-reverse float-right rounded-bl-xl relative`,
-    received: `bg-[#e5e5ea] text-black float-left rounded-br-xl relative`,
+    message: `flex items-center shadow-xl my-1 px-2 py-2 rounded-tl-xl rounded-tr-xl cursor-pointer relative`,
+    name: ` text-black text-xs min-w-max`,
+    globeSent: `bg-[#395dff] text-white rounded-bl-xl`,
+    globeReceived: `bg-[#e5e5ea] text-black rounded-br-xl`,
+    messageContainer:'flex flex-col px-2',
+    messageSent:'items-end',
+    messageReceived:'items-start'
   };
   const [date, setDate] = useState(0);
   const timeStampToDate = () => {
@@ -47,22 +50,22 @@ function Message({ message, messagePath }) {
   }
 
   return (
-    <div className=''>
-      <motion.div className={`${style.message} ${user?.uid === message.uid ? style.sent : style.received}`}
-           initial='rest' whileHover='hover'
-      >
-        <p className={style.name}>{message.name ? message.name : "Anon"}</p>
-        <p title={date}>{message.text}</p>
-        {/* Delete */}
-        { user?.uid === message.uid ? 
-        (<motion.div className='absolute left-[-42px] text-black'
-          variants={deleteMotion}
-        >
-          <Delete messagePath={messagePath} messageId={message.id}/>
-        </motion.div>) 
-        : '' }
+    <div className={`${style.messageContainer} ${user?.uid === message.uid ? style.messageSent : style.messageReceived}`}>
+      <p className={style.name}>{message.name ? message.name : "Anon"}</p>
+        <motion.div className={`${style.message} ${user?.uid === message.uid ? style.globeSent : style.globeReceived}`}
+           initial='rest' whileHover='hover'>
         
-      </motion.div>
+          <p title={date}>{message.text}</p>
+          {/* Delete */}
+          { user?.uid === message.uid ? 
+          (<motion.div className='absolute left-[-42px] text-black'
+            variants={deleteMotion}
+          >
+            <Delete messagePath={messagePath} messageId={message.id}/>
+          </motion.div>) 
+          : '' }
+        
+        </motion.div>
 
     </div>
   );

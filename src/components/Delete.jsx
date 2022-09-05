@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     color: 'black'
   },
   kebabBg:{
-    backgroundColor: '#7b7b7bd1',
+    backgroundColor: '#969696d1',
     '&:hover':{
       backgroundColor: '#c0c0c0fd'
     }
