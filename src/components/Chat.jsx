@@ -34,7 +34,7 @@ function Chat({roomPath}) {
   };
 
   /* Animating the messages appearance */
-  const variant ={
+  /* const variant ={
     entrance: i => ({
       scale: 1,
       transition: {
@@ -42,7 +42,7 @@ function Chat({roomPath}) {
         duration: .5
       },
     })
-  }
+  } */
 
   useEffect(() => {
     getMessages();
@@ -56,10 +56,10 @@ function Chat({roomPath}) {
           ? messages.map((message, i) => (
               <motion.div
                 initial={{ scale:0 }}
+                animate={{ scale:1 }}
                 key={i}
-                custom={i}
-                variants={variant}
-                animate='entrance'
+                /* variants={variant} */
+                /* animate='entrance' */
                 className={`${user?.uid === message.uid ? 'self-end' : 'self-start'} max-w-[80vw] md:max-w-max`}
               >
                 <Message key={message.id} message={message} messagePath={roomPath}></Message>
